@@ -1,0 +1,27 @@
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: magia_db
+    volumes:
+      - ./incident-management-backend/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+
+  backend:
+    build: ./incident-management-backend
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@db:5432/magia_db
+    ports:
+      - "4000:3000"
+    depends_on:
+      - db
+
+  frontend:
+    build: ./plataforma-epica
+    ports:
+      - "3001:3001"
+    depends_on:
+      - backend
