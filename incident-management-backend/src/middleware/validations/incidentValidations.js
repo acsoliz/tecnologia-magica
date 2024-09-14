@@ -37,8 +37,9 @@ export const assignIncidentValidations = [
         .notEmpty()
         .withMessage('El id es obligatorio.'),
 
-    // Validar el campo status en el cuerpo de la solicitud
+    // Validar el campo status en el cuerpo de la solicitud / esto es cuando un admin pide la informacion de un usuario
     body('userId')
+        .optional()
         .isInt()
         .withMessage('El userId debe ser un numero.')
         .notEmpty()

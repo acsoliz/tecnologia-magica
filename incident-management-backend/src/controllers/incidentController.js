@@ -81,8 +81,8 @@ export async function updateIncidentStatus (req, res) {
 };
 
 export async function assignIncident  (req, res) {
-  const { id } = req.params;
-  const { userId } = req.body;
+  const id = req.params.id;
+  const  userId  = req.userId || req.body.userId;
 
   const incident = await Incident.findByPk(parseInt(id));
   if (!incident) return res.status(404).json({ error: 'Incident not found' });
