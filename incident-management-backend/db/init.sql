@@ -21,4 +21,4 @@ INSERT INTO "Users" (username, password, role) VALUES ('admin', 'adminpassword',
 
 -- Insertar datos de ejemplo en la tabla Incidents
 INSERT INTO "Incidents" (title, status, priority, assignedTo) VALUES ('Primera Incidencia', 'OPEN', 'HIGH', 1);
-INSERT INTO "Incidents" (title, status, priority, assignedTo) VALUES ('Segunda Incidencia', 'CLOSED', 'LOW', 1);
+INSERT INTO "Incidents" (title, status, priority, assignedTo) VALUES ('Segunda Incidencia', 'OPEN', 'LOW', 1);

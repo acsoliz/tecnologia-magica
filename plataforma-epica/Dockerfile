@@ -16,8 +16,14 @@ COPY . .
 # Compilar la aplicación Next.js para producción
 RUN npm run build
 
+# Exportar los archivos estáticos de Next.js
+RUN npm run export
+
+# Instalar 'serve' para servir los archivos estáticos
+RUN npm install -g serve
+
 # Exponer el puerto en el que la app se ejecutará
-EXPOSE 3001
+EXPOSE 3000
 
 # Comando para iniciar la aplicación en modo producción
-CMD ["npm", "start"]
+CMD ["serve", "-s", "out"]

@@ -10,7 +10,8 @@
     "build-prod": "node -r dotenv/config ./node_modules/.bin/next build",
     "start": "next start",
     "test": "jest",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next export" 
   },
   "dependencies": {
     "ahooks": "^3.7.8",

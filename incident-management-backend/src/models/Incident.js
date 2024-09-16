@@ -1,3 +1,4 @@
+// tecnologia-magica\incident-management-backend\src\models\Incident.js
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/database.js';
 

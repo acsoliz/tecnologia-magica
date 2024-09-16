@@ -1,3 +1,4 @@
+"use client"
 import { getCookie } from "cookies-next";
 import { useRequest } from "ahooks";
 import { message } from "antd";

@@ -44,7 +44,7 @@ export default class ApiRequestHandler{
     public readonly ApiUrl: string
 
     constructor() {
-        this.ApiUrl = process.env.NEXT_PUBLIC_APP_URL ?? throwExpression("App url is not set")
+        this.ApiUrl = (process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000') ?? throwExpression("App url is not set")
     }
 
     private getHeadersConfig(userToken?: string): AxiosRequestConfig {
@@ -101,7 +101,7 @@ export default class ApiRequestHandler{
                 if (axiosError.response && axiosError.response.status !== 200 && axiosError.response.data) {
                     const response = axiosError.response.data as string;
                     const errorKind = ErrorKindMap.get(response) ?? ErrorKind.UndefinedError;
-                    throw new APIError(errorKind);
+                    // throw new APIError(errorKind);
                 }
             }
             throw new APIError(ErrorKind.UndefinedError);

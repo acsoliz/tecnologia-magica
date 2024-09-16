@@ -1,5 +1,4 @@
-// hooks/useUserProfile.ts
-
+"use client"
 import { useRequest } from "ahooks";
 import { getCookie } from "cookies-next";
 import { UserController } from "@/src/UserController";

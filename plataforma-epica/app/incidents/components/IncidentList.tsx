@@ -1,19 +1,9 @@
+"use client"
 import React from "react";
 import { List, Card, Typography, Tag } from "antd";
+import { Incidents } from "@/src/types/types";
 
-type Incidents = {
-    id: number;
-	title: string;
-	status: string;
-	priority: string;
-	assignedTo: number;
-	createdAt: string;
-	updatedAt: string;
-	assignedUser: {
-        id: number,
-		username: string
-	}
-}
+
 
 const { Title, Text } = Typography;
 export const IncidentList: React.FC<{ incidents: Incidents[] }> = ({ incidents }) => {

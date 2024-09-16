@@ -1,12 +1,9 @@
 import { Table, Tag, Button, Space, message, Flex, Popconfirm } from "antd";
 import { CheckOutlined, UserOutlined } from "@ant-design/icons";
 import { useIncidentActions } from "../hooks"; // Ajusta la ruta según sea necesario
+import { User } from "@/src/types/types";
 
-type User = {
-  username: string;
-  id: number;
-  role: string;
-}
+
 
 interface TableComponentProps {
   incidents: any[];

@@ -8,6 +8,7 @@ import User from './models/User.js';
 import Incident from './models/Incident.js';
 import cors from 'cors'
 import bodyParser from "body-parser";
+import { createAdminUserIfNotExists } from './controllers/userController.js';
 
 dotenv.config();
 
@@ -24,6 +25,9 @@ app.use('/api/incidents', incidentRoutes);
 
 sequelize.sync().then(() => {
   console.log('Connected to the database');
+  createAdminUserIfNotExists().then(()=>{
+    console.log('User admin, creaded!')
+  })
   app.listen(3000, () => {
     console.log('Server running on http://localhost:3000');
   });

@@ -1,3 +1,4 @@
+"use client"
 import React, {useState} from "react"
 import {Button, Flex, Form, Image, Input, Typography} from "antd"
 import { LockOutlined, UserOutlined} from "@ant-design/icons"

@@ -1,5 +1,4 @@
-// incidents\hooks\useIncidentLoader.ts
-
+"use client"
 import { useState, useEffect } from "react";
 import { useRequest } from "ahooks";
 import { APIError, ErrorKind } from "@/src/ApiRequestHandler";

@@ -1,3 +1,4 @@
+"use client"
 import { useState } from "react";
 import { useRequest } from "ahooks";
 import { APIError, ErrorKind } from "@/src/ApiRequestHandler";

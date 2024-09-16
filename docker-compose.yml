@@ -5,23 +5,38 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: magia_db
-    volumes:
-      - ./incident-management-backend/db/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
-      - "5432:5432"
+      - "5432:5432" 
+    # volumes:
+      # - ./incident-management-backend/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   backend:
     build: ./incident-management-backend
     environment:
+      DB_NAME: magia_db
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_HOST: db  # El backend se conecta a "db"
+      DB_PORT: 5432  # Usar el puerto interno de PostgreSQL 
       DATABASE_URL: postgres://postgres:postgres@db:5432/magia_db
     ports:
-      - "4000:3000"
+      - "3000:3000"
     depends_on:
-      - db
-
+      db:
+        condition: service_healthy  # Espera hasta que la base de datos esté lista
+ 
   frontend:
-    build: ./plataforma-epica
+    build: 
+      context: ./plataforma-epica
     ports:
-      - "3001:3001"
+      - "3001:3000"
     depends_on:
       - backend
+      - db
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:3000
